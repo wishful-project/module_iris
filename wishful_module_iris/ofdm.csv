@@ -1,0 +1,5 @@
+engine,component,parameter,name
+phyengine14,usrprx1,frequency,frequency
+phyengine1,usrprx1,rate,rate
+phyengine1,usrprx1,gain,gain
+phyengine1,usrprx1,bandwidth,bandwidth
