@@ -3,7 +3,7 @@
 ## Introduction
 This package contains the components which may be used to create a
 DVB-T broadcasting transmitter with the IRIS software radio framework.
-this transmitter can also be controlled by means of the WiSHFUL UPIs.
+This transmitter can also be controlled by means of the WiSHFUL UPIs.
 In the following, we will briefly describe the DVB-T waveform, then we will show
 how to download, compile, assemble, operate, and control
 the software-defined DVB-T modulator.
