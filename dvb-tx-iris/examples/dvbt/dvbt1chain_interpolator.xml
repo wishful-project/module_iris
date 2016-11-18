@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8" ?> 
+
+<softwareradio name="Radio1">
+
+  <engine name="phyengine1" class="phyengine">
+
+    <component name="filerawreader1" class="filerawreader">
+      <parameter name="filename" value="mux4800000.ts"/>
+      <parameter name="blocksize" value="4096"/>
+      <parameter name="datatype" value="uint8_t"/>
+      <port name="output1" class="output"/>
+    </component>
+
+    <component name="dvbt1scrambler1" class="dvbt1scrambler">
+      <parameter name="debug" value="true"/>
+      <port name="input1" class="input"/>
+      <port name="output1" class="output"/>
+    </component>
+    
+    <component name="dvbt1rsencoder1" class="dvbt1rsencoder">
+      <parameter name="debug" value="true"/>
+      <port name="input1" class="input"/>
+      <port name="output1" class="output"/>
+    </component>
+    
+    <component name="dvbt1convinterleaver1" class="dvbt1convinterleaver">
+      <parameter name="debug" value="true"/>
+      <port name="input1" class="input"/>
+      <port name="output1" class="output"/>
+    </component>
+
+    <component name="dvbt1convencoder1" class="dvbt1convencoder">
+      <parameter name="debug" value="true"/>
+      <port name="input1" class="input"/>
+      <port name="output1" class="output"/>
+    </component>
+
+    <component name="dvbt1puncturer1" class="dvbt1puncturer">
+      <parameter name="debug" value="true"/>
+      <parameter name="coderate" value="34"/>
+      <port name="input1" class="input"/>
+      <port name="output1" class="output"/>
+    </component>
+
+    <component name="dvbt1bitinterleaver1" class="dvbt1bitinterleaver">
+      <parameter name="debug" value="true"/>
+      <parameter name="qammapping" value="64"/>
+      <parameter name="hyerarchymode" value="0"/>
+      <port name="input1" class="input"/>
+      <port name="output1" class="output"/>
+    </component>
+
+    <component name="dvbt1symbolinterleaver1" class="dvbt1symbolinterleaver">
+      <parameter name="debug" value="true"/>
+      <parameter name="ofdmmode" value="2048"/>
+      <port name="input1" class="input"/>
+      <port name="output1" class="output"/>
+    </component>
+
+    <component name="dvbt1mapper1" class="dvbt1mapper">
+      <parameter name="debug" value="true"/>
+      <parameter name="qammapping" value="64"/>
+      <parameter name="hyerarchymode" value="0"/>
+      <port name="input1" class="input"/>
+      <port name="output1" class="output"/>
+    </component>
+
+    <component name="dvbt1framer1" class="dvbt1framer">
+      <parameter name="debug" value="true"/>
+      <parameter name="ofdmmode" value="2048"/>
+      <parameter name="qammapping" value="64"/>
+      <parameter name="hyerarchymode" value="0"/>
+      <parameter name="cellid" value="-1"/>
+      <parameter name="hpcoderate" value="34"/>
+      <parameter name="indepthinterleaver" value="false"/>
+      <parameter name="deltamode" value="32"/>
+      <port name="input1" class="input"/>
+      <port name="output1" class="output"/>
+    </component>
+
+    <component name="dvbt1ofdmmod1" class="dvbt1ofdmmod">
+      <parameter name="debug" value="true"/>
+      <parameter name="ofdmmode" value="2048"/>
+      <parameter name="deltamode" value="32"/>
+      <parameter name="outpower" value="50"/>
+      <port name="input1" class="input"/>
+      <port name="output1" class="output"/>
+    </component>
+
+    <component name="dvbt1interpolator1" class="dvbt1interpolator">
+      <parameter name="debug" value="true"/>
+      <parameter name="insamplerate" value="0"/>
+      <parameter name="outsamplerate" value="12500000"/>
+      <parameter name="responsefile" value="interp.txt"/>
+      <port name="input1" class="input"/>
+      <port name="output1" class="output"/>
+    </component>
+
+   <component name="filerawwriter1" class="filerawwriter">
+      <parameter name="filename" value="/dev/null"/>
+      <port name="input1" class="input"/>
+    </component>
+
+  </engine>
+
+  <link source="filerawreader1.output1" sink="dvbt1scrambler1.input1" />
+  <link source="dvbt1scrambler1.output1" sink="dvbt1rsencoder1.input1" />
+  <link source="dvbt1rsencoder1.output1" sink="dvbt1convinterleaver1.input1" />
+  <link source="dvbt1convinterleaver1.output1" sink="dvbt1convencoder1.input1" />
+  <link source="dvbt1convencoder1.output1" sink="dvbt1puncturer1.input1" />
+  <link source="dvbt1puncturer1.output1" sink="dvbt1bitinterleaver1.input1" />
+  <link source="dvbt1bitinterleaver1.output1" sink="dvbt1symbolinterleaver1.input1" />
+  <link source="dvbt1symbolinterleaver1.output1" sink="dvbt1mapper1.input1" />
+  <link source="dvbt1mapper1.output1" sink="dvbt1framer1.input1" />
+  <link source="dvbt1framer1.output1" sink="dvbt1ofdmmod1.input1" />
+  <link source="dvbt1ofdmmod1.output1" sink="dvbt1interpolator1.input1" />
+  <link source="dvbt1interpolator1.output1" sink="filerawwriter1.input1" />
+
+</softwareradio>
+
+

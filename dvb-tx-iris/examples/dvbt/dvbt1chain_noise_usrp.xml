@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8" ?> 
+
+<softwareradio name="Radio1">
+
+  <engine name="phyengine1" class="phyengine">
+
+    <component name="dvbt1noisegenerator1" class="dvbt1noisegenerator">
+      <parameter name="blocksize" value="150000"/>
+      <parameter name="variance" value="1"/>
+      <port name="output1" class="output"/>
+    </component>
+  
+  </engine>
+  <engine name="phyengine2" class="phyengine">
+
+    <component name="dvbt1usrptx1" class="dvbt1usrptx">
+      <parameter name="frequency" value="666000000"/>
+      <parameter name="rate" value="12500000"/>
+      <parameter name="streaming" value="true"/>
+      <parameter name="numbuffers" value="4"/>
+      <parameter name="args" value="addr=192.168.10.3"/>
+      <port name="input1" class="input"/>
+    </component>
+
+  </engine>
+  
+  <link source="dvbt1noisegenerator1.output1" sink="dvbt1usrptx1.input1" />
+
+</softwareradio>
+
+
